@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevToolBox · 在线开发工具箱</title>
+    <meta name="description" content="免费在线开发工具：JSON 格式化、时间戳转换、Base64 编解码、URL 编解码、UUID 生成。程序员日常必备。">
+    <meta name="keywords" content="JSON格式化,时间戳转换,Base64,URL编码,UUID,开发工具">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google AdSense：把下面的 ca-pub-XXXXXX 换成你自己的发布商 ID 后即可展示广告 -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXX" crossorigin="anonymous"></script> -->
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1>DevToolBox</h1>
+            <p class="subtitle">免费在线开发工具箱 · 程序员的日常小帮手</p>
+        </div>
+    </header>
+
+    <nav class="tabs container" id="tabs">
+        <button class="tab active" data-target="json">JSON 格式化</button>
+        <button class="tab" data-target="timestamp">时间戳转换</button>
+        <button class="tab" data-target="base64">Base64</button>
+        <button class="tab" data-target="url">URL 编解码</button>
+        <button class="tab" data-target="uuid">UUID 生成</button>
+    </nav>
+
+    <main class="container">
+        <!-- JSON -->
+        <section class="panel active" id="json">
+            <h2>JSON 格式化 / 校验 / 压缩</h2>
+            <textarea id="jsonInput" placeholder="在此粘贴 JSON 文本…"></textarea>
+            <div class="btn-row">
+                <button onclick="formatJson()">格式化</button>
+                <button onclick="minifyJson()">压缩</button>
+                <button onclick="copyText('jsonOutput')">复制结果</button>
+                <button onclick="clearText('jsonInput','jsonOutput')">清空</button>
+            </div>
+            <pre id="jsonOutput" class="output"></pre>
+        </section>
+
+        <!-- Timestamp -->
+        <section class="panel" id="timestamp">
+            <h2>时间戳 ⇄ 日期</h2>
+            <label>Unix 时间戳（自动识别秒/毫秒）</label>
+            <div class="input-row">
+                <input type="text" id="tsInput" placeholder="例如 1760000000 或 1760000000000">
+                <button onclick="tsToDate()">转日期</button>
+                <button onclick="setNowTs()">当前时间</button>
+            </div>
+            <label>日期字符串（yyyy-MM-dd HH:mm:ss）</label>
+            <div class="input-row">
+                <input type="text" id="dateInput" placeholder="2026-09-22 12:00:00">
+                <button onclick="dateToTs()">转时间戳</button>
+            </div>
+            <pre id="tsOutput" class="output"></pre>
+        </section>
+
+        <!-- Base64 -->
+        <section class="panel" id="base64">
+            <h2>Base64 编解码</h2>
+            <textarea id="b64Input" placeholder="输入要编码或解码的文本…"></textarea>
+            <div class="btn-row">
+                <button onclick="b64Encode()">编码</button>
+                <button onclick="b64Decode()">解码</button>
+                <button onclick="copyText('b64Output')">复制结果</button>
+                <button onclick="clearText('b64Input','b64Output')">清空</button>
+            </div>
+            <pre id="b64Output" class="output"></pre>
+        </section>
+
+        <!-- URL -->
+        <section class="panel" id="url">
+            <h2>URL 编解码</h2>
+            <textarea id="urlInput" placeholder="输入要编码或解码的 URL / 文本…"></textarea>
+            <div class="btn-row">
+                <button onclick="urlEncode()">编码</button>
+                <button onclick="urlDecode()">解码</button>
+                <button onclick="copyText('urlOutput')">复制结果</button>
+                <button onclick="clearText('urlInput','urlOutput')">清空</button>
+            </div>
+            <pre id="urlOutput" class="output"></pre>
+        </section>
+
+        <!-- UUID -->
+        <section class="panel" id="uuid">
+            <h2>UUID 生成</h2>
+            <div class="input-row">
+                <label>数量</label>
+                <input type="number" id="uuidCount" value="5" min="1" max="100" style="width:80px">
+                <button onclick="genUuid()">生成</button>
+            </div>
+            <pre id="uuidOutput" class="output"></pre>
+        </section>
+
+        <!-- 广告位：取消注释 AdSense 脚本后，这里可放一个广告单元 -->
+        <!--
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXX"
+             data-ad-slot="YYYYYY"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        -->
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>© DevToolBox · 纯前端工具，数据均在本地处理，不会上传。</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
